@@ -5,7 +5,7 @@ cache:
   directories:
   - node_modules
 script:
-  - cd $TRAVIS_BUILD_DIR/project
+  - cd $TRAVIS_BUILD_DIR/weather-forecast-test/
   - npm install
   - npm run build
 deploy:
