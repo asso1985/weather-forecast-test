@@ -94,7 +94,7 @@ export const getGeolocation = () => (dispatch) => {
   })
   .catch((err) => {
     dispatch({
-      type: GEOLOCATION_SUCCESS,
+      type: GEOLOCATION_FAILURE,
       err
     });
   })

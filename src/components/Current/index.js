@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Spinner } from '../';
+import { Icon } from '../';
 import format from 'date-fns/format';
 import { unixToDate } from '../../utils/';
 import './_current.scss';

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Day } from '../';
-import { groupBy } from '../../utils/';
 import PropTypes from 'prop-types';
 import './_dayForecast.scss';
 

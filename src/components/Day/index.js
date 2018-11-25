@@ -12,7 +12,7 @@ class Day extends Component {
     params: PropTypes.object.isRequired
   }  
   render() {
-    const { day, params } = this.props;
+    const { day } = this.props;
 
     const date = format( unixToDate(day[0].dt), 'ddd' );
     const weather = day[0].weather[0].main;

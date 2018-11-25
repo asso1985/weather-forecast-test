@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React, { Component } from 'react';
-import { Search, Current, Spinner, DaysForecast } from '../components';
+import { Current, Spinner, DaysForecast } from '../components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -9,7 +9,6 @@ import {
   getCities,
   addCity,
   getForecastByCityId,
-  getForecastByLatLon,
   getGeolocation,
   searchLocationByLatLon
 } from '../actions';

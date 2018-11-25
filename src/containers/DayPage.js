@@ -9,7 +9,6 @@ import {
   getCities,
   addCity,
   getForecastByCityId,
-  getForecastByLatLon,
   getGeolocation,
   searchLocationByLatLon
 } from '../actions';
