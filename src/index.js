@@ -8,7 +8,7 @@ import "./index.scss";
 const store = configureStore();
 
 render(
-  <Router>
+  <Router basename={'/weather-forecast-test'}>
     <Root store={store} />
   </Router>,
   document.getElementById('root')

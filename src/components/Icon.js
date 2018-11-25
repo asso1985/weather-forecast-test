@@ -29,7 +29,7 @@ class Icon extends Component {
   const iconName = this.getIcon(icon);
 
   return (
-    <img alt={iconName} width={`${dimension}px`} height={`${dimension}px`} src={`/icons/${iconName}.svg`} />
+    <img alt={iconName} width={`${dimension}px`} height={`${dimension}px`} src={`${process.env.PUBLIC_URL}/icons/${iconName}.svg`} />
   )
  }
 };
