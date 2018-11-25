@@ -2,6 +2,7 @@
   "name": "weather-forecast-test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://asso1985.github.io/weather-forecast-test/",
   "dependencies": {
     "date-fns": "^1.29.0",
     "humps": "^2.0.1",
