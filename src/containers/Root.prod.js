@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import CitiesPage from './CitiesPage';
 import DayPage from './DayPage';
-import DevTools from './DevTools';
 
 const Root = ({ store }) => (
   <Provider store={store}>
