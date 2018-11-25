@@ -1,6 +1,8 @@
-import { combineReducers } from 'redux'
-import cities from './cities'
+import { combineReducers } from 'redux';
+import geolocation from './geolocation';
+import cities from './cities';
 
 export default combineReducers({
-  cities
+  cities,
+  geolocation
 })

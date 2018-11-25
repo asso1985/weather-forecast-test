@@ -1,0 +1,169 @@
+/* Flex classes */
+
+
+$flex__grid-name: flexgrid;
+
+$flex__grid-item: #{$flex__grid-name}__item;
+
+$flex__grid-gutter: $base__grid-gutter;
+
+.#{$flex__grid-name} {
+    display: flex !important;
+    flex-flow: row wrap;
+    margin: 0;
+    margin-left: -$flex__grid-gutter;
+    padding: 0;
+
+    // Halve gutter
+    &--narrow {
+        margin-left: - halve($flex__grid-gutter);
+
+        > .#{$flex__grid-item} {
+            padding-left: halve($flex__grid-gutter);
+        }
+    }
+
+    // Double gutter
+    &--wide {
+        margin-left: - double($flex__grid-gutter);
+
+        > .#{$flex__grid-item} {
+            padding-left: double($flex__grid-gutter);
+        }
+    }
+
+    // Avoid gutter
+    &--full {
+        margin-left: 0;
+
+        > .#{$flex__grid-item} {
+            padding-left: 0;
+        }
+    }    
+
+    // Avoid wrapping of elements
+    &--nowrap {
+        flex-wrap: nowrap;
+    }
+
+    // Alignment
+    &--center {
+        justify-content: center;
+    }
+
+    &--right {
+        justify-content: flex-end;
+        align-self: flex-end;
+    }
+
+    &--top {
+        align-items: flex-start;
+    }
+
+    &--middle {
+        align-items: center;
+    }
+
+    &--baseline {
+        align-items: baseline;
+
+        > .#{$flex__grid-item} {
+            align-self: baseline;
+        }
+    }
+
+    &--bottom {
+        align-items: flex-end;
+    }
+
+    // Ordering
+    &--reverse {
+        flex-direction: row-reverse;
+    }
+
+    &--column {
+        flex-direction: column;
+
+        > .#{$flex__grid-item} {
+            flex-basis: auto;
+        }
+    }
+
+    &--column-reverse {
+        flex-direction: column-reverse;
+    }
+
+    &--space-around {
+        justify-content: space-around;
+    }
+
+    &__item {
+        flex: 1 1 0%;
+        padding-left: 32px;
+    }
+
+    @media only screen and (max-width: 40em) {
+        &--stack-m > #{$flex__grid-item} {
+            flex-basis:100%;
+        }
+    }
+
+    @media only screen and (max-width: 48em) {
+        .flexgrid__item {
+            flex-basis:100%;
+        }
+    }    
+
+}
+
+
+/// Create both silent and solid classes for the items
+.#{$flex__grid-item} {
+
+    flex: 1 1 0%;
+    padding-left: $flex__grid-gutter;
+
+/*    @include vp-medium--max {
+        flex-basis: 100%;
+    }*/
+
+    &--fixed {
+        flex: 0 1 auto;
+    }
+
+    &--stretch {
+        flex: 1 1 auto;
+    }
+    
+    &--no-shrink {
+        flex: 1 0 auto;
+    }
+
+    &--top {
+        align-self: flex-start;
+    }
+
+    &--middle {
+        align-self: center;
+    }
+
+    &--bottom {
+        align-self: flex-end;
+    }
+
+    &--first {
+        order: -1;
+    }
+
+    &--last {
+        order: 1;
+    }
+
+    &--truncate {
+        min-width: 0;
+    }
+}
+
+.u-width-100 {
+    width: 100%;
+}

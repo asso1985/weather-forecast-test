@@ -1,0 +1,44 @@
+@mixin class-type($name) {
+        .#{$name},
+        %#{$name} {
+                @content
+        }
+}
+
+@mixin make-rule($value, $rule) {
+        @if type-of($value) == 'list' {
+                font-size: nth($value, 1);
+                @if (length($value) > 1) {
+                 line-height: nth($value, 2);
+                }
+        } @else {
+                #{$rule}: #{$value};
+        }
+}
+
+@mixin rem($property, $values.../*, $important */) {
+    $last: nth($values, -1);
+    $important: $last == true;
+    $use-important: if($important, '!important', '');
+    $n: if($important, length($values) - 1, length($values));
+    $i: 1;
+    $remlist: ();
+
+    @while $i <= $n {
+
+        $itemVal: nth($values, $i);
+
+        @if $itemVal != 'auto' {
+
+            $remlist: append($remlist, ($itemVal / 10) + rem);
+
+        } @else {
+            $remlist: append($remlist, auto);
+        }
+
+        $i: $i + 1;
+    }
+
+    #{$property}: $remlist #{$use-important};
+
+}

@@ -1,15 +1,19 @@
-import { GET_CITIES, ADD_CITY } from '../constants/action-types';
-import { listMap } from '../mappers/listMap';
+import {
+  GET_CITIES,
+  ADD_CITY,
+  SEARCH_LOCATION_REQUEST,
+  SEARCH_LOCATION_SUCCESS,
+  SEARCH_LOCATION_FAILURE,
+  FORECAST_REQUEST,
+  FORECAST_SUCCESS,
+  FORECAST_FAILURE  
+} from '../constants/action-types';
+
+import { findObjIndex } from '../utils/';
 
 const initialState = {
   isLoading: true,
-  items:[ 
-    {
-      id: 0,
-      name: 'Ny York',
-      days: []
-    }
-  ]
+  items:[]
 };
 
 const cities = (state = initialState, action) => {
@@ -20,17 +24,34 @@ const cities = (state = initialState, action) => {
         items: [
           ...state.items,
           {
-            id: action.payload.id,
+            id: parseInt(action.payload.id),
             name: action.payload.name,
-            days: []
+            country: action.payload.country,
+            selected: true,
+            forecast: action.payload.forecast
           }
         ]
       }
     case GET_CITIES:
+      return {
+        isLoading: false,
+        ...state
+      }
+    case FORECAST_REQUEST:
+      return state
+    case FORECAST_SUCCESS:
+      state.items[findObjIndex(state.items, 'id', action.response.city.id)] = {
+        ...state.items[0],
+        forecast: action.response.list
+      }
+      return {
+          ...state
+      }
+    case FORECAST_FAILURE:
       return state
     default:
       return state
   }
 }
 
-export default cities
+export default cities;

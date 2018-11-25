@@ -1,0 +1,277 @@
+/* ------------------------------
+
+  Media Queries Mixins
+
+ ----------------------------- */
+
+////
+/// Create mixins to manage MQs. The approach is mobile-first, so all MQ starts from a min-width,
+/// but there are also MQs available for max-width, suffixed with `--max`:
+/// vp-small--max
+/// @group Media queries
+////
+
+/// Collect all breakpoints to be passed to MQ
+/// @type {map}
+$breakpoints: (
+        small-x  : 30em, // 480px
+        small-m  : 35em, // 560px
+        small    : 40em, // 640px
+        medium   : 48em, // 768px
+        medium-x : 50em, // 800px
+        large    : 64em, // 1024px
+        large-m  : 64.1em, // 1025px
+        large-x  : 75em, // 1200px
+        large-xl : 80em, // 1280px
+        large-xx : 100em // 1600px
+);
+
+
+/// Collect all breakpoints types
+/// @type {map}
+$breakpoints-types: (
+        min: min,
+        max: max,
+);
+
+///
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-large-xx { ... }
+///
+@mixin vp-large-xx {
+        @media only screen and (min-width: map-get($breakpoints, large-xx)) { /* 1600px */
+                @content;
+        }
+}
+
+///
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-large-xl { ... }
+///
+@mixin vp-large-xl {
+        @media only screen and (min-width: map-get($breakpoints, large-xl)) { /* 1280px */
+                @content;
+        }
+}
+
+///
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-large-xl--max { ... }
+///
+@mixin vp-large-xl--max {
+        @media only screen and (max-width: map-get($breakpoints, large-xl)) { /* 1280px */
+                @content;
+        }
+}
+
+///
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-large-x { ... }
+///
+@mixin vp-large-x {
+        @media only screen and (min-width: map-get($breakpoints, large-x)) { /* 1200px */
+                @content;
+        }
+}
+
+///
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-large-x--max { ... }
+///
+@mixin vp-large-x--max {
+        @media only screen and (max-width: map-get($breakpoints, large-x)) { /* 1200px */
+                @content;
+        }
+}
+
+///
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-large-m { ... }
+///
+@mixin vp-large-m {
+        @media only screen and (min-width: map-get($breakpoints, large-m)) { /* 1050px */
+                @content;
+        }
+}
+
+///
+/// Mediaquery up to `large-m` breakpoint
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-large-m--max { ... }
+///
+@mixin vp-large-m--max {
+        @media only screen and (max-width: map-get($breakpoints, large-m)) { /* 1050px */
+                @content;
+        }
+}
+
+///
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-large { ... }
+///
+@mixin vp-large {
+        @media only screen and (min-width: map-get($breakpoints, large)) { /* 1024px */
+                @content;
+        }
+}
+
+///
+/// Mediaquery up to `large` breakpoint
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-large--max { ... }
+///
+@mixin vp-large--max {
+        @media only screen and (max-width: map-get($breakpoints, large)) { /* 1024px */
+                @content;
+        }
+}
+
+///
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-medium-x { ... }
+///
+@mixin vp-medium-x {
+        @media only screen and (min-width: map-get($breakpoints, medium-x)) { /* 800px */
+                @content;
+        }
+}
+
+///
+/// Mediaquery up to `medium-x` breakpoint
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-medium-x--max { ... }
+///
+@mixin vp-medium-x--max {
+        @media only screen and (max-width: map-get($breakpoints, medium-x)) { /* 800px */
+                @content;
+        }
+}
+
+///
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-medium { ... }
+///
+@mixin vp-medium {
+        @media only screen and (min-width: map-get($breakpoints, medium)) { /* 768px */
+                @content;
+        }
+}
+
+///
+/// Mediaquery up to `medium` breakpoint
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-medium--max { ... }
+///
+@mixin vp-medium--max {
+        @media only screen and (max-width: map-get($breakpoints, medium)) { /* 768px */
+                @content;
+        }
+}
+
+///
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-small { ... }
+///
+@mixin vp-small {
+        @media only screen and (min-width: map-get($breakpoints, small)) { /* 640px */
+                @content;
+        }
+}
+
+///
+/// Mediaquery up to `small` breakpoint
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-small--max { ... }
+///
+@mixin vp-small--max {
+        @media only screen and (max-width: map-get($breakpoints, small)) { /* 640px */
+                @content;
+        }
+}
+
+///
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-small-m { ... }
+///
+@mixin vp-small-m {
+        @media only screen and (min-width: map-get($breakpoints, small-m)) { /* 560px */
+                @content;
+        }
+}
+
+///
+/// Mediaquery up to `small-m` breakpoint
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-small-m--max { ... }
+///
+@mixin vp-small-m--max {
+        @media only screen and (max-width: map-get($breakpoints, small-m)) { /* 560px */
+                @content;
+        }
+}
+
+///
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-small-x { ... }
+///
+@mixin vp-small-x {
+        @media only screen and (min-width: map-get($breakpoints, small-x)) { /* 480px */
+                @content;
+        }
+}
+
+///
+/// Mediaquery up to `small-x` breakpoint
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp-small-x--max { ... }
+///
+@mixin vp-small-x--max {
+        @media only screen and (max-width: map-get($breakpoints, small-x)) { /* 480px */
+                @content;
+        }
+}
+
+
+///
+/// Generic Mediaquery mixin that can be used to dynamically get a meadia query
+/// @content Styles for this mediaquery
+/// @example
+///     @include vp(small, max) { ... }
+///
+@mixin vp($breakpoint, $type) {
+        @media only screen and (#{map-get($breakpoints-types, $type)}-width: map-get($breakpoints, $breakpoint)) {
+                @content;
+        }
+}
+
+///
+/// Media query detection
+/// Inject Break point name in the DOM for debugging purpose
+/// @example
+///       @include define-breakpoint('vp-small-x');
+///
+@mixin define-breakpoint($name) {
+        &::after {
+                content: $name;
+                display: none;
+        }
+}

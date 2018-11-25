@@ -1,0 +1,49 @@
+/// Extra small spacing
+/// @type {number}
+$spacing-xs: 4 !default;
+
+/// Small spacing
+/// @type {number}
+$spacing-s: 8 !default;
+
+/// Normal spacing
+/// @type {number}
+$spacing: 16 !default;
+
+/// Large spacing
+/// @type {number}
+$spacing-l: 24 !default;
+
+/// Large-x spacing
+/// @type {number}
+$spacing-lm: 32 !default;
+
+/// Extra large spacing
+/// @type {number}
+$spacing-xl: 40 !default;
+
+/// Extra extra large spacing
+/// {type} number
+$spacing-xxl: 48 !default;
+
+/// Large-x doubled spacing
+/// @type {number}
+$spacing-3xl: double($spacing-lm) !default;
+
+/// Extra large doubled spacing
+/// @type {number}
+$spacing-4xl: double($spacing-xl) !default;
+
+/// Extra extra large doubled spacing
+/// {type} number
+$spacing-5xl: double($spacing-xxl) !default;
+
+$base__grid-gutter: to-number(#{$spacing-lm}px) !default;
+
+$ns-utility: 'u-';
+
+//Colors
+
+$color__white: #fff;
+$color__gray--light: #E2E2E2;
+$color__secondary: #022E4B;

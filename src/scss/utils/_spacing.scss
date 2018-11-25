@@ -1,0 +1,119 @@
+
+/* Spacing */
+@import 'scss/abstracts/variables';
+@import 'scss/abstracts/helpers';
+
+/// 4 valid directions and a null value when we do not specify a direction
+/// @type {map}
+$spacing__directions: (
+        null: null,
+        '': '-',
+        '-top': 'top--',
+        '-right': 'right--',
+        '-bottom': 'bottom--',
+        '-left': 'left--',
+);
+
+/// Properties to which apply values
+/// @type {map}
+$spacing__properties: (
+        'padding': 'padding-',
+        'margin': 'margin-',
+);
+
+/// Map available spacing to a map, used to create utility classes
+/// @type {map}
+/// @property {number} spacing__sizes.flush [0]
+/// @property {number} spacing__sizes.xs [$spacing-xs]
+/// @property {number} spacing__sizes.s [$spacing-s]
+/// @property {number} spacing__sizes.norm [$spacing]
+/// @property {number} spacing__sizes.m [$spacing-m]
+/// @property {number} spacing__sizes.l [$spacing-l]
+/// @property {number} spacing__sizes.lm [$spacing-lm]
+/// @property {number} spacing__sizes.xl [$spacing-xl]
+/// @property {number} spacing__sizes.xxl [$spacing-xxl]
+/// @example
+/// <span class="u-margin-bottom--l u-padding-s">Some content</span>
+$spacing__sizes: (
+        flush: 0,
+        xs: $spacing-xs,
+        s: $spacing-s,
+        norm: $spacing,
+        m: $spacing,
+        l: $spacing-l,
+        lm: $spacing-lm,
+        xl: $spacing-xl,
+        xxl: $spacing-xxl,
+);
+
+/// Create sub map without `flush` key to avoid useless overriding
+/// @type {map}
+$spacing__sizes-no-flush: map-remove($spacing__sizes, flush);
+
+/// Map of spacing directions with modular values
+/// @type {map}
+$modular_spacing__directions: update-map($spacing__directions, (null, '', -left, -right));
+
+/// Spacing values with modular scale.
+/// First value in the list is the mobile value
+/// @type {map}
+/// @property {list} modular_spacing__sizes.xxl [$spacing-xl, $spacing-xxl]
+/// @property {list} modular_spacing__sizes.3xl [$spacing-xxl, $spacing-3xl]
+/// @property {list} modular_spacing__sizes.4xl [$spacing-3xl, $spacing-4xl]
+/// @property {list} modular_spacing__sizes.5xl [$spacing-4xl, $spacing-5xl]
+$modular_spacing__sizes: (
+        xxl: $spacing-xl $spacing-xxl,
+        3xl: $spacing-xxl $spacing-3xl,
+        4xl: $spacing-3xl $spacing-4xl,
+        5xl: $spacing-4xl $spacing-5xl,
+);
+
+// Loop through all 3 spacing maps and output spacing classes, based on directions, properties and sizes
+@each $property, $property-namespace in $spacing__properties {
+        
+        @each $direction, $direction-namespace in $spacing__directions {
+                @each $size, $value in $spacing__sizes {
+                        @include class-type(#{$ns-utility}#{$property-namespace}#{$direction-namespace}#{$size}) {
+                                @include rem(#{$property}#{$direction}, $value, true);
+                        }
+                }
+        }
+        
+        @each $direction, $direction-namespace in $modular_spacing__directions {
+                @each $modular-size, $modular-values in $modular_spacing__sizes {
+                        
+                        $mobile-value: nth($modular-values, 1);
+                        $desk-value: nth($modular-values, 2);
+                
+                        @include class-type(#{$ns-utility}#{$property-namespace}#{$direction-namespace}#{$modular-size}) {
+                                @include rem(#{$property}#{$direction}, $desk-value, true);
+                                
+                                @include vp-large--max {
+                                        @include rem(#{$property}#{$direction}, $mobile-value, true);
+                                }
+                        }
+                }
+
+        }
+}
+
+
+/// Map available subset spacing to a map, used to create utility classes
+/// @type {map}
+/// @example
+/// <span class="u-margin-reset-left--s u-padding-s">Some content</span>
+$reset_spacing__directions: update-map($spacing__directions, (null, -top, -bottom));
+$reset_spacing__sizes: update-map($spacing__sizes, (flush, norm, l, lm, xl, xxl, 3xl, 4xl, 5xl));
+
+/// Loop through subset of spacing maps and output spacing reset classes, based on directions, properties and sizes
+@each $direction, $direction-namespace in $reset_spacing__directions {
+
+        @each $size, $value in $reset_spacing__sizes {
+
+                @include class-type(#{$ns-utility}margin-reset-#{$direction-namespace}#{$size}) {
+                        @include rem(margin#{$direction}, -$value, true);
+                }
+
+        }
+
+}
