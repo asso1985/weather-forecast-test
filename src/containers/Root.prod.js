@@ -9,8 +9,8 @@ const Root = ({ store }) => (
   <Provider store={store}>
     <div className="flexgrid flexgrid-full flexgrid--center flexgrid--middle u-height--full container">
       <Switch>
-        <Route exact path={`${process.env.PUBLIC_URL}/:cityId`} component={CitiesPage} />
-        <Route exact path={`${process.env.PUBLIC_URL}/:cityId/:dayId`} component={DayPage} />
+        <Route exact path={`${process.env.PUBLIC_URL}/`} component={CitiesPage} />
+        <Route path={`${process.env.PUBLIC_URL}/:dayId`} component={DayPage} />
       </Switch>
     </div>
   </Provider>

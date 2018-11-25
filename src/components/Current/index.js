@@ -17,8 +17,6 @@ class Current extends Component {
     const descWeather = forecast && forecast.weather[0].description;
     const hour = format( unixToDate(forecast.dt), 'h A' );
 
-    console.log(unixToDate(1543179600));
-
     if (!forecast) {
       return false;
     }

@@ -55,12 +55,11 @@ class CitiesPage extends Component {
 
   render() {
         const currentCity = this.getCurrentCity();
-        const { match } = this.props;
         return (
           <>
             {!currentCity && <Spinner />}
             {currentCity && <Current city={currentCity} />}
-            {currentCity && <DaysForecast days={currentCity.forecast} params={match.params} />}
+            {currentCity && <DaysForecast days={currentCity.forecast} />}
           </>
         );
   }

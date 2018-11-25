@@ -32,4 +32,17 @@ export const groupBy = (arr, prop) => {
   return newArray;
 }
 
+const generateRandomString = (lenght, characterSet) => {
+  let text = '';
+  for (var i = 0; i < lenght; i++) {
+    text += characterSet.charAt(Math.floor(Math.random() * characterSet.length));
+  }
+  return text;
+};
+
+export const makeId = (lenght) => {
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  return generateRandomString(lenght, possible);
+};
+
 export const unixToDate = (unix) => new Date(unix*1000);

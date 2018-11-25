@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { DEFAULT_CITY } from '../constants/config';
+import format from 'date-fns/format';
+import { unixToDate } from '../utils/';
 import {
-  getCities,
   addCity,
   getForecastByCityId,
   getGeolocation,
@@ -20,8 +21,17 @@ class DayPage extends Component {
 
   componentDidMount() {
 
+    
+
+    // console.log(match.params.dayId)
+
     this.getForecastByLocation();
 
+
+  }
+
+  componentDidUpdate() {
+    this.getCurrentDay();
   }
 
   getDefualtCityForecast() {
@@ -52,19 +62,43 @@ class DayPage extends Component {
     return cities.items.filter(city => city.selected)[0];
   }
 
+  getCurrentDay() {
+    const arr = this.getCurrentCity();
+    const { match } = this.props;
+    if (arr) {
+      const filtered = arr.forecast.filter(item => {
+        return item.dtTxt.startsWith(match.params.dayId)
+      });
+
+      return filtered;
+    }
+
+    return false;
+  }
+
   render() {
+        const currentDay = this.getCurrentDay();
         const currentCity = this.getCurrentCity();
+        
+        if (!currentCity || ! currentDay) {
+          return <Spinner />;
+        }
+
+        const date = format( unixToDate(currentDay[0].dt), 'dddd, D MMMM' );
+
         return (
           <>
-            {!currentCity && <Spinner />}
-            {currentCity && <Forecast day={currentCity.forecast} />}
+            <div className="u-text--center">
+              <h3>{currentCity.name} - {currentCity.country}</h3>
+              <h2>{date}</h2>
+            </div>
+            {currentDay && <Forecast day={currentDay} />}
           </>
         );
   }
 };
 
 const mapDispatchToProps = {
-  getCities,
   addCity,
   getForecastByCityId,
   getGeolocation,

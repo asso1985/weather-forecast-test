@@ -9,10 +9,10 @@ import './_day.scss';
 class Day extends Component {
   static propTypes = {
     day: PropTypes.array.isRequired,
-    params: PropTypes.object.isRequired
+    dayId: PropTypes.string.isRequired,
   }  
   render() {
-    const { day } = this.props;
+    const { day, dayId } = this.props;
 
     const date = format( unixToDate(day[0].dt), 'ddd' );
     const weather = day[0].weather[0].main;
@@ -22,7 +22,7 @@ class Day extends Component {
     return (
       
       <div className="c-day u-text--center">
-        <Link to={`${day[0].dt}`}>
+        <Link to={`${process.env.PUBLIC_URL}/${dayId}`}>
         <h3>{date}</h3>
         <div className="a-icon">
           <Icon icon={weather} width={100} height={100}/>
