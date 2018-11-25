@@ -22,7 +22,7 @@ class Day extends Component {
     return (
       
       <div className="c-day u-text--center">
-        <Link to={`${process.env.PUBLIC_URL}/${dayId}`}>
+        <Link to={`/${dayId}`}>
         <h3>{date}</h3>
         <div className="a-icon">
           <Icon icon={weather} width={100} height={100}/>
