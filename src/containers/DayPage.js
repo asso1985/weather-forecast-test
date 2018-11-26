@@ -89,7 +89,7 @@ class DayPage extends Component {
         return (
           <>
             <div className="u-text--center">
-              <h3>{currentCity.name} - {currentCity.country}</h3>
+              <h1>{currentCity.name} - {currentCity.country}</h1>
               <h2>{date}</h2>
             </div>
             {currentDay && <Forecast day={currentDay} />}
