@@ -7,7 +7,7 @@ import DayPage from './DayPage';
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <div className="flexgrid flexgrid-full flexgrid--center flexgrid--middle u-height--full container">
+    <div className="flexgrid flexgrid-full flexgrid--center flexgrid--middle flexgrid--column u-height--full container">
       <Switch>
         <Route exact path={`/`} component={CitiesPage} />
         <Route path={`/:dayId`} component={DayPage} />
