@@ -24,8 +24,20 @@ code {
     monospace;
 }
 
-#root
- {
+button {
+  background-color: #fff;
+  border:0;
+  color: #6495ed;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+   background-color: #6495ed;
+   color: #fff;
+  }
+}
+
+#root {
     height: 100vh;
 }
 

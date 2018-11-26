@@ -71,6 +71,11 @@ class DayPage extends Component {
     return false;
   }
 
+  goBack = () => {
+    const { history } = this.props;
+    this.props.history.goBack();
+  }
+
   render() {
         const currentDay = this.getCurrentDay();
         const currentCity = this.getCurrentCity();
@@ -81,6 +86,8 @@ class DayPage extends Component {
 
         const date = format( unixToDate(currentDay[0].dt), 'dddd, D MMMM' );
 
+        const backLink = <button className="u-margin-top--l t-size--small" onClick={this.goBack}>Back</button>;
+
         return (
           <>
             <div className="u-text--center">
@@ -88,6 +95,7 @@ class DayPage extends Component {
               <h2>{date}</h2>
             </div>
             {currentDay && <Forecast day={currentDay} />}
+            {backLink}
           </>
         );
   }
