@@ -69,7 +69,6 @@ export const addCity = (payload) => (dispatch) => {
     });
 }
 
-
 // Geolocation
 export const getGeolocation = () => (dispatch) => {
 

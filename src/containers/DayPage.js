@@ -21,12 +21,7 @@ class DayPage extends Component {
 
   componentDidMount() {
 
-    
-
-    // console.log(match.params.dayId)
-
     this.getForecastByLocation();
-
 
   }
 
