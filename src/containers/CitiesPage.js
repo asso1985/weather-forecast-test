@@ -35,7 +35,10 @@ class CitiesPage extends Component {
       if (data.coords) {
         this.props.searchLocationByLatLon(data.coords.latitude, data.coords.longitude).then((data) => {
           this.addCity(data.response.city.id, data.response.city.name, data.response.city.country, data.response.list);
-        });
+        })
+        .catch((err) => {
+          console.warn(err);
+        })
       }
     })
     .catch((err) => {
