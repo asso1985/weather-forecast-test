@@ -75,7 +75,6 @@ class DayPage extends Component {
   }
 
   goBack = () => {
-    const { history } = this.props;
     this.props.history.goBack();
   }
 
